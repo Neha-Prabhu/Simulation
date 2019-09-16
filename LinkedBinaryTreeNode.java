@@ -6,52 +6,47 @@ public class LinkedBinaryTreeNode<E> implements BinaryTreeNode<E> {
     protected LinkedBinaryTreeNode<E> left;
     protected LinkedBinaryTreeNode<E> right;
 
-    /**
-     * Constructs a node as the root of its own one-element tree.
-     * This is the only public constructor.  The only trees that
-     * clients can make directly are simple one-element trees.
-     */
+     //Constructs a node as the root of its own one-element tree.
     public LinkedBinaryTreeNode(E data) {
         this.data = data;
     }
 
-    /**
-     * Returns the data stored in this node.
-     */
+    //Returns the data stored in this node.
     public E getData() {
         return data;
     }
 
-    /**
-     * Modifies the data stored in this node.
-     */
+
+
+     //Modifies the data stored in this node.
     public void setData(E data) {
         this.data = data;
     }
 
-    /**
-     * Returns the parent of this node, or null if this node is a root.
-     */
+
+
+    //Returns the parent of this node, or null if this node is a root.
     public BinaryTreeNode<E> getParent() {
       return parent;
     }
 
-    /**
-     * Returns the left child of this node, or null if it does
-     * not have one.
-     */
+    //Returns the left child of this node, or null if it does not have one.
     public BinaryTreeNode<E> getLeft() {
       return left;
     }
 
-    /**
-     * Removes child from its current parent and inserts it as the
-     * left child of this node.  If this node already has a left
-     * child it is removed.
-     * @exception IllegalArgumentException if the child is
-     * an ancestor of this node, since that would make
-     * a cycle in the tree.
+
+    
+     //Removes child from its current parent and inserts it as the
+     //left child of this node.  If this node already has a left
+     //child it is removed.
+    
+ /* exception IllegalArgumentException if the child is
+      an ancestor of this node, since that would make
+      a cycle in the tree.
      */
+
+
     public void setLeft(BinaryTreeNode<E> child) {
         // Ensure the child is not an ancestor.
         for (LinkedBinaryTreeNode<E> n = this; n != null; n = n.parent) {
@@ -74,22 +69,21 @@ public class LinkedBinaryTreeNode<E> implements BinaryTreeNode<E> {
         this.left = childNode;
     }
 
-    /**
-     * Returns the right child of this node, or null if it does
-     * not have one.
-     */
+    //Returns the right child of this node, or null if it does not have one.
     public BinaryTreeNode<E> getRight() {
       return right;
     }
 
-    /**
-     * Removes child from its current parent and inserts it as the
-     * right child of this node.  If this node already has a right
-     * child it is removed.
-     * @exception IllegalArgumentException if the child is
-     * an ancestor of this node, since that would make
-     * a cycle in the tree.
+     //Removes child from its current parent and inserts it as the
+     //right child of this node.  If this node already has a right
+     //child it is removed.
+
+
+     /* exception IllegalArgumentException if the child is
+     an ancestor of this node, since that would make
+     a cycle in the tree.
      */
+
     public void setRight(BinaryTreeNode<E> child) {
         // Ensure the child is not an ancestor.
         for (LinkedBinaryTreeNode<E> n = this; n != null; n = n.parent) {
@@ -112,10 +106,7 @@ public class LinkedBinaryTreeNode<E> implements BinaryTreeNode<E> {
         this.right = childNode;
     }
 
-    /**
-     * Removes this node, and all its descendants, from whatever
-     * tree it is in.  Does nothing if this node is a root.
-     */
+   //Removes this node, and all its descendants, from whatever tree it is in.  Does nothing if this node is a root.
     public void removeFromParent() {
         if (parent != null) {
             if (parent.left == this) {
@@ -127,27 +118,24 @@ public class LinkedBinaryTreeNode<E> implements BinaryTreeNode<E> {
         }
     }
 
-    /**
-     * Visits the nodes in this tree in preorder.
-     */
+    //Visits the nodes in this tree in preorder.
+   
     public void traversePreorder(BinaryTreeNode.Visitor visitor) {
         visitor.visit(this);
         if (left != null) left.traversePreorder(visitor);
         if (right != null) right.traversePreorder(visitor);
     }
 
-    /**
-     * Visits the nodes in this tree in postorder.
-     */
+    //Visits the nodes in this tree in postorder.
+    
     public void traversePostorder(Visitor visitor) {
         if (left != null) left.traversePostorder(visitor);
         if (right != null) right.traversePostorder(visitor);
         visitor.visit(this);
     }
 
-    /**
-     * Visits the nodes in this tree in inorder.
-     */
+    //Visits the nodes in this tree in inorder.
+  
     public void traverseInorder(Visitor visitor) {
         if (left != null) left.traverseInorder(visitor);
         visitor.visit(this);
