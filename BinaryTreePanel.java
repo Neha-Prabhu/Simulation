@@ -13,9 +13,7 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 
-/**
- * A panel that maintains a picture of a binary tree.
- */
+//A panel that maintains a picture of a binary tree.
 public class BinaryTreePanel extends JPanel
 {
     private BinaryTreeNode<?> tree;
